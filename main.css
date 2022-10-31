@@ -13,7 +13,7 @@ body {
 
 h1 {
     text-align: center;
-    margin: 8rem;
+    margin: 4rem 8rem 8rem;
     font-family: "Arial Narrow";
     font-variant: all-petite-caps;
     font-size: 3rem;
@@ -28,7 +28,7 @@ h1 {
 .indexButton {
     width: 20rem;
     text-align: center;
-    margin: 0 3rem;
+    margin: 0 4rem 2rem;
     padding: 5rem 0;
     font-size: 2.2rem;
     font-family: "Arial Narrow";
