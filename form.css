@@ -1,7 +1,7 @@
 /* 
 * Stylesheet for:
 * employee.html
-* register.html
+* form.html
 * 
 * The two keep the same layout, 
 * therefore, both are covered with this css stylesheet,
@@ -15,7 +15,7 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    margin: 1em;
+    margin: 1em 1em 0;
 }
 
 li {
@@ -38,6 +38,21 @@ input, select {
     margin: 0 2.5em 0 0.5em;
 }
 
-#street, #email {
+input:invalid {
+    background-color: rgba(221,147,148,0.2);
+}
+
+#submit {
+    margin-top: 1em;
+}
+
+#streetForm, #emailForm {
     width: 16em;
+}
+
+span {
+    background: white;
+    border: 0.05em solid gray;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
 }
