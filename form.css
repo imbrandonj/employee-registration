@@ -1,0 +1,45 @@
+/* 
+*   form.css
+*   author: Brandon Jenkins
+*   date: 11/25/2022
+*
+*   Stylesheet for form display
+*/
+
+li {
+    padding: 0 2em;
+    font-size: 1.5em;
+}
+
+label {
+    font-size: 1.5em;
+}
+
+input, option {
+    font-size: 1.2em;
+    padding: 0.2em;
+}
+
+input, select {
+    width: 8em;
+    margin: 0 2.5em 0 0.5em;
+}
+
+input:invalid {
+    background-color: rgba(221,147,148,0.2);
+}
+
+#submit {
+    margin-top: 1em;
+}
+
+#streetForm, #emailForm {
+    width: 16em;
+}
+
+#employeeDetails span {
+    background: white;
+    border: 0.05em solid gray;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+}
