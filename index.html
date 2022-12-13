@@ -6,7 +6,7 @@
     <title>Employee Registration</title>
     <link href="style.css" rel="stylesheet">
     <link href="form.css" rel="stylesheet">
-    <script src="main.js" defer></script>
+    <script src="employee.js" defer></script>
     <script src="display.js" defer></script>
     <script src="form.js" defer></script>
 </head>
@@ -34,18 +34,18 @@
 
                 <div class="wrapper">
                 <label for="firstName">First Name</label>
-                <input name="firstName" id="firstNameForm" required type="text" value="test" />
+                <input name="firstName" id="firstNameForm" required type="text" maxlength="25" value="test" />
 
                 <label for="lastName">Last Name</label>
-                <input name="lastName" id="lastNameForm" required type="text" value="test" />
+                <input name="lastName" id="lastNameForm" required type="text" maxlength="25" value="test" />
 
                 <label for="middleName">Middle Name</label>
-                <input name="middleName" id="middleNameForm" required type="text" value="test" />
+                <input name="middleName" id="middleNameForm" type="text" maxlength="25" value="test" />
                 </div>
 
                 <div class="wrapper">
                 <label for="dob">Date of Birth</label>
-                <input name="dob" id="dobForm" required type="date" />
+                <input name="dob" id="dobForm" required type="date" max="2004-12-31" min="1923-01-01"  />
 
                 <label for="social">Social Security #</label>
                 <input name="social" id="socialForm" required type="text" value="222-22-2222" />
@@ -120,7 +120,7 @@
                 </select>
 
                 <label for="zipcode">ZIP Code</label>
-                <input name="zipcode" id="zipcodeForm" required type="text" value="test" />
+                <input name="zipcode" id="zipcodeForm" required type="text" pattern="[0-9]{5}" value="00000" />
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                 
                 <div class="wrapper">
                 <label for="hireDate">Hire Date</label>
-                <input name="hireDate" id="hireDateForm" required type="date" />
+                <input name="hireDate" id="hireDateForm" required type="date" max="2022-12-31" />
 
                 <label for="jobPosition">Current Position</label>
                 <input name="jobPosition" id="jobPositionForm" required type="text" value="test" />
@@ -224,13 +224,13 @@
     <div id="employeeList">
         <h1>Employee List</h1>
 
-        <div id="list">
-        <ul>
+        <ol id="list">
+            <!--
             <li><a href="">Jenkins, Brandon</a></li>
             <li><a href="">New, Guy</a></li>
             <li><a href="">WillChange, ThisLook</a></li>
-        </ul>
-        </div>
+            -->
+        </ol>
 
     </div>
     <!-- End Employee List -->

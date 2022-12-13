@@ -50,7 +50,7 @@ footForm.addEventListener("click", () => {
 let currentDisplay = "index";
 
 // Main display content function
-// argument "content" can be "listContent", "formContent", "indexContent", or "employeeContent"
+// parameter "content" can be "listContent", "formContent", "indexContent", or "employeeContent"
 function display(content) {
 
     // Check current display conditions
@@ -73,6 +73,7 @@ function display(content) {
     // Change to employee list content
     if ( content == listContent ) {
         currentDisplay = "list";
+        displayList(employeeArray);
         footHome.style.display = "block";
         footForm.style.display = "block";
         footList.style.display = "none";
@@ -92,11 +93,44 @@ function display(content) {
         footForm.style.display = "none";
     }
     // Change to employee details content
-    else if ( content == employeContent ) {
+    else if ( content == employeeContent ) {
         currentDisplay = "employee";
         footHome.style.display = "block";
         footList.style.display = "block";
         footForm.style.display = "block";
     }
 
+}
+
+// Display employee list provided by employeeArray[] 
+// employeeArray[] is declared and initialized in employee.js file
+function displayList(employeeObjArray) {
+
+    // div holding li to be created
+    let list = document.getElementById("list");
+
+    // No employees yet entered
+    if ( employeeObjArray.length === 0 ) {
+        let noEmployees = document.createElement("p");
+        noEmployees.textContent = "No employees yet entered.";
+        list.append(noEmployees);
+    }
+
+    // Create a list of employee objects to be displayed
+    else {
+
+        // Clear previous list contents
+        while ( list.firstChild ) {
+            list.removeChild(list.firstChild);
+        }
+
+        // List creation of employee objects
+        for ( let employee of employeeArray ) {
+            let listItem = document.createElement("li");
+            let anchor = document.createElement("a");
+            anchor.textContent = employee.lastName + ", " + employee.firstName;
+            listItem.append(anchor);
+            list.append(listItem);
+        }
+    }
 }
