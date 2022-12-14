@@ -1,3 +1,4 @@
+"use strict";
 /*
 *   display.js
 *   author: Brandon Jenkins
@@ -6,6 +7,11 @@
 *   Display
 *   The purpose of this file is the selection of which content to display
 *   In the single-page Employee Registration app
+*
+*   Major div labels: index, form, employee content, and list are used for display
+*   These divs are inactive via CSS, with only one of them being active at a time
+*
+*   display.js also performs employee list display via the Employee object array 
 */
 
 // Main content display elements
@@ -102,12 +108,21 @@ function display(content) {
 
 }
 
-// Display employee list provided by employeeArray[] 
-// employeeArray[] is declared and initialized in employee.js file
+/*
+* Displays Employee list, provided by employeeArray[] 
+* ( employeeArray[] is declared and initialized in employee.js file )
+* Each li will have an event listener, that, when clicked
+* Displays the clicked Employee content in employeeDetails div card
+*/
 function displayList(employeeObjArray) {
 
     // div holding li to be created
     let list = document.getElementById("list");
+
+    // Clear previous list contents
+    while ( list.firstChild ) {
+        list.removeChild(list.firstChild);
+    }
 
     // No employees yet entered
     if ( employeeObjArray.length === 0 ) {
@@ -119,16 +134,34 @@ function displayList(employeeObjArray) {
     // Create a list of employee objects to be displayed
     else {
 
-        // Clear previous list contents
-        while ( list.firstChild ) {
-            list.removeChild(list.firstChild);
-        }
+        // Sort employeeArray alphabetically by last name
+        employeeArray.sort( (a, b) => a.lastName.localeCompare(b.lastName) );
 
-        // List creation of employee objects
+        // List creation of Employee objects
         for ( let employee of employeeArray ) {
             let listItem = document.createElement("li");
             let anchor = document.createElement("a");
             anchor.textContent = employee.lastName + ", " + employee.firstName;
+
+            // Event listener for this anchor, when triggered, displays Employee contents
+            anchor.addEventListener("click", () => {
+
+                for ( let employee of employeeArray ) {
+
+                    if ( employee.lastName + ", " + employee.firstName === anchor.textContent ) {
+                        // Push Employee clicked to localStorage
+                        pushToLocal(employee);
+
+                        // Display the Employee details card
+                        display(employeeContent);
+
+                        // This function (located in employee.js) fills the Employee detail card
+                        fillEmployeeCard();
+                    }
+                }
+            });
+
+            // Append new Employee element to the list
             listItem.append(anchor);
             list.append(listItem);
         }

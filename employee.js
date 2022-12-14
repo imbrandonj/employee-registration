@@ -1,3 +1,4 @@
+"use strict";
 /*
 *   main.js
 *   author: Brandon Jenkins
