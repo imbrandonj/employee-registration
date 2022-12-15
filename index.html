@@ -1,3 +1,12 @@
+<!--
+    Employee Registration App
+    index.html
+    author: Brandon Jenkins
+    date: 12/14/2022
+
+    This file serves as the index, main, and only html file for the Employee Registration App
+-->
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -47,7 +56,7 @@
                 <input name="dob" id="dobForm" required type="date" max="2004-12-31" min="1923-01-01"  />
 
                 <label for="social">Social Security #</label>
-                <input name="social" id="socialForm" required type="text" value="222-22-2222" />
+                <input name="social" id="socialForm" required type="text" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" value="222-22-2222" />
                 </div>
 
             </div>
@@ -198,6 +207,9 @@
         <div class="container">
             <div class="wrapper">
             <li>Hire Date: <span id="hireDate"></span></li>
+            </div>
+
+            <div class="wrapper">
             <li>Current Position: <span id="jobPosition"></span></li>
             <li>Department: <span id="department"></span></li>
             </div>
@@ -222,7 +234,7 @@
     <!-- Employee List -->
     <div id="employeeList">
         <h1>Employee List</h1>
-        <h2>Arranged alphabeticaly by last name</h2>
+        <h2>Arranged alphabetically by last name</h2>
         <h2>Click to view details about employee</h2>
         <ol id="list">
         </ol>

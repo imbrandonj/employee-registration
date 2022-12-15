@@ -1,5 +1,6 @@
 "use strict";
 /*
+*   Employee Registration App
 *   main.js
 *   author: Brandon Jenkins
 *   date: 11/25/2022
@@ -12,23 +13,25 @@
 
 // Employee Class
 // This is the necessary employee information for an Employee object
-function Employee(firstName, lastName, middleName, dob, social, street, city, state, zipcode, hireDate, jobPosition, department, homePhone, workPhone, cellPhone, email) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.middleName = middleName;
-    this.dob = dob;
-    this.social = social;
-    this.street = street;
-    this.city = city;
-    this.state = state;
-    this.zipcode = zipcode;
-    this.hireDate = hireDate;
-    this.jobPosition = jobPosition;
-    this.department = department;
-    this.homePhone = homePhone;
-    this.workPhone = workPhone;
-    this.cellPhone = cellPhone;
-    this.email = email;
+class Employee {
+    constructor(firstName, lastName, middleName, dob, social, street, city, state, zipcode, hireDate, jobPosition, department, homePhone, workPhone, cellPhone, email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.dob = dob;
+        this.social = social;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.hireDate = hireDate;
+        this.jobPosition = jobPosition;
+        this.department = department;
+        this.homePhone = homePhone;
+        this.workPhone = workPhone;
+        this.cellPhone = cellPhone;
+        this.email = email;
+    }
 }
 
 // Array of Employee objects

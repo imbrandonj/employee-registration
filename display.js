@@ -1,5 +1,6 @@
 "use strict";
 /*
+*   Employee Registration App
 *   display.js
 *   author: Brandon Jenkins
 *   date: 11/25/2022
@@ -105,7 +106,6 @@ function display(content) {
         footList.style.display = "block";
         footForm.style.display = "block";
     }
-
 }
 
 /*
@@ -143,9 +143,10 @@ function displayList(employeeObjArray) {
             let anchor = document.createElement("a");
             anchor.textContent = employee.lastName + ", " + employee.firstName;
 
-            // Event listener for this anchor, when triggered, displays Employee contents
+            // Event listener for each anchor, when triggered, displays Employee contents
             anchor.addEventListener("click", () => {
 
+                // Search through array to find the clicked Employee object
                 for ( let employee of employeeArray ) {
 
                     if ( employee.lastName + ", " + employee.firstName === anchor.textContent ) {

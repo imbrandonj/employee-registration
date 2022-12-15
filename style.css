@@ -1,9 +1,10 @@
 /*
+*   Employee Registration App
 *   style.css
 *   author: Brandon Jenkins
 *   date: 11/25/2022
 *
-*   This file serves as the main stylesheet for the Employee Registration System app
+*   This file serves as the main and only stylesheet for the Employee Registration System app
 */
 
 body {
@@ -87,7 +88,11 @@ li {
     background-color: white;
 }
 
-.indexButton:hover, .footLink:hover {
+#indexListButton:hover {
+    background-color:rgba(71, 154, 255, 0.246);
+}
+
+#indexRegisterButton:hover {
     background-color: rgb(255, 242, 254);
 }
 

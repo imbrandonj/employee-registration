@@ -1,5 +1,6 @@
 "use strict";
 /* 
+*   Employee Registration App
 *   form.js
 *   author: Brandon Jenkins
 *   date: 11/25/2022 
@@ -13,44 +14,88 @@
 // Form ID
 let form = document.getElementById("register");
 
-// Form input elements
+// Form input fields that are validated via js
+// Remainder input fields are validated within html
 let firstNameField = document.getElementById("firstNameForm");
 let lastNameField = document.getElementById("lastNameForm");
 let middleNameField = document.getElementById("middleNameForm");
-let dobField = document.getElementById("dobForm");
 let socialField = document.getElementById("socialForm");
 let streetField = document.getElementById("streetForm");
 let cityField = document.getElementById("cityForm");
-let stateField = document.getElementById("stateForm");
 let zipcodeField = document.getElementById("zipcodeForm");
-let hireDateField = document.getElementById("hireDateForm");
-let jobPositionField = document.getElementById("jobPositionForm");
-let departmentField = document.getElementById("departmentForm");
 let homePhoneField = document.getElementById("homePhoneForm");
 let workPhoneField = document.getElementById("workPhoneForm");
 let cellPhoneField = document.getElementById("cellPhoneForm");
-let emailField = document.getElementById("emailForm");
 
 
 // Submit button events
 let subButton = document.getElementById("submit");
-subButton.addEventListener("click", validateName);  // correct name character input
+subButton.addEventListener("click", validateNames);  // test correct name character input
+subButton.addEventListener("click", validateStreet);  // test correct street character input
 subButton.addEventListener("click", validateTele);  // custom phone validity message
 subButton.addEventListener("click", validateZip);  // custom ZIP code message
+subButton.addEventListener("click", validateSocial);  // custom social security validity message
 
 
-// Validate name characters - only letters and apostrophes
-function validateName() {
+// Validate name strings - only letters, hypens, white space, and apostrophes
+// Provide custom validity messages
+function validateNames() {
+    
+    // Regex - only letters, & 1 instance of each: apostrophes, hyphens, white space
+    let nameRegx = /[^a-zA-Z\s'-]|[\s'-]{2}/g;
 
-    // First name
+    // Tested field values:
+    let firstName = firstNameField.value;
+    let middleName = middleNameField.value;
+    let lastName = lastNameField.value;
+    let cityName = cityField.value;
 
-    // Last name
+    // First name test
+    if ( nameRegx.test(firstName) )
+        firstNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+    else 
+        firstNameField.setCustomValidity("");
 
-    // Middle name
+    // Middle name test
+    if ( nameRegx.test(middleName) )
+        middleNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+    else 
+        middleNameField.setCustomValidity("");
+
+    // Last name test
+    if ( nameRegx.test(lastName) )
+        lastNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+    else 
+        lastNameField.setCustomValidity("");
+
+    // City name test
+    if ( nameRegx.test(cityName) )
+        cityField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+    else 
+        cityField.setCustomValidity("");
+}
+
+
+// Validate street - only digits, letters, hypens, or apostrophes
+function validateStreet() {
+
+    // Regex - only digits and letters, & 1 instance of each: apostrophes, hyphens, white space
+    let streetRegx = /[^\da-zA-Z\s'-]|[\s'-]{2}/g;
+
+    // Street value
+    let street = streetField.value;
+
+    // Street test vs regex; custom validity messages
+    if ( streetRegx.test(street) )
+        streetField.setCustomValidity("Enter digits, letters, and only one instance of a hyphen or apostrophe");
+    else 
+        streetField.setCustomValidity("");
+
 }
 
 
 // Show custom validity message for Phone numbers
+// Pattern type given in index.html
 function validateTele() {
    
     // Home Phone
@@ -83,12 +128,22 @@ function validateZip() {
 }
 
 
+// Show custom validity message for social security
+function validateSocial() {
+
+    if ( socialField.validity.patternMismatch || socialField.validity.valueMissing )
+        socialField.setCustomValidity("Enter in xxx-xx-xxxx format");
+    else
+        socialField.setCustomValidity("");
+}
+
+
 // Form submit event
 form.addEventListener("submit", (event) => {
 
     event.preventDefault();
     
-    // Retrieve form values
+    // Retrieve form values:
     let firstName = document.getElementById("firstNameForm").value;
     let lastName = document.getElementById("lastNameForm").value;
     let middleName = document.getElementById("middleNameForm").value;
@@ -105,7 +160,6 @@ form.addEventListener("submit", (event) => {
     let workPhone = document.getElementById("workPhoneForm").value;
     let cellPhone = document.getElementById("cellPhoneForm").value;
     let email = document.getElementById("emailForm").value;
-    
 
     // Create a new Employee object based off form values
     let newEmployee = new Employee(firstName, lastName, middleName, dob, social, street, city, state, zipcode, hireDate, jobPosition, department, homePhone, workPhone, cellPhone, email);
@@ -113,16 +167,16 @@ form.addEventListener("submit", (event) => {
     // Append the new Employee object to our array of Employee objects
     employeeArray.push(newEmployee);
 
-    // Store new Employee in localStorage for immediate review
+    // Store new Employee in localStorage for immediate review ( function located in employee.js )
     pushToLocal(newEmployee);
 
     // Reset form for new Employee to be registered
     document.forms.register.reset();
 
-    // Display the Employee details upon form submission (located in display.js)
+    // Display the Employee details upon form submission ( located in display.js )
     display(employeeContent);
 
-    // This function (located in employee.js) fills the Employee detail card
+    // This function ( located in employee.js ) fills the Employee detail card
     fillEmployeeCard();
 
 });
