@@ -5,6 +5,13 @@
     date: 12/14/2022
 
     This file serves as the index, main, and only html file for the Employee Registration App
+
+    The Employee Registration App allows the user to manually enter employees,
+    View a list of employees,
+    The details of each employee entered,
+    And delete employees as necessary
+
+    View the README for more information
 -->
 
 <!DOCTYPE html>
@@ -42,21 +49,21 @@
 
                 <div class="wrapper">
                 <label for="firstName">First Name</label>
-                <input name="firstName" id="firstNameForm" required type="text" maxlength="25" value="test" />
+                <input name="firstName" id="firstNameForm" required type="text" maxlength="25" />
 
                 <label for="lastName">Last Name</label>
-                <input name="lastName" id="lastNameForm" required type="text" maxlength="25" value="test" />
+                <input name="lastName" id="lastNameForm" required type="text" maxlength="25" />
 
                 <label for="middleName">Middle Name</label>
-                <input name="middleName" id="middleNameForm" type="text" maxlength="25" value="test" />
+                <input name="middleName" id="middleNameForm" type="text" maxlength="25" placeholder="Optional" />
                 </div>
 
                 <div class="wrapper">
                 <label for="dob">Date of Birth</label>
-                <input name="dob" id="dobForm" required type="date" max="2004-12-31" min="1923-01-01"  />
+                <input name="dob" id="dobForm" required type="date" max="2006-12-31" min="1923-01-01"  />
 
                 <label for="social">Social Security #</label>
-                <input name="social" id="socialForm" required type="text" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" value="222-22-2222" />
+                <input name="social" id="socialForm" required type="text" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" placeholder="xxx-xx-xxxx" />
                 </div>
 
             </div>
@@ -65,10 +72,10 @@
                 
                 <div class="wrapper">
                 <label for="street">Street</label>
-                <input name="street" id="streetForm" required type="text" value="test" />
+                <input name="street" id="streetForm" required type="text" />
 
                 <label for="city">City</label>
-                <input name="city" id="cityForm" required type="text" value="test" />
+                <input name="city" id="cityForm" required type="text" />
                 </div>
 
                 <div class="wrapper">
@@ -128,7 +135,7 @@
                 </select>
 
                 <label for="zipcode">ZIP Code</label>
-                <input name="zipcode" id="zipcodeForm" required type="text" pattern="[0-9]{5}" value="00000" />
+                <input name="zipcode" id="zipcodeForm" required type="text" pattern="[0-9]{5}" placeholder="xxxxx" />
                 </div>
             </div>
 
@@ -139,10 +146,10 @@
                 <input name="hireDate" id="hireDateForm" required type="date" max="2022-12-31" />
 
                 <label for="jobPosition">Current Position</label>
-                <input name="jobPosition" id="jobPositionForm" required type="text" value="test" />
+                <input name="jobPosition" id="jobPositionForm" required type="text" maxlength="25" />
 
                 <label for="department">Department</label>
-                <input name="department" id="departmentForm" required type="text" value="test" />
+                <input name="department" id="departmentForm" required type="text" maxlength="25" />
                 </div>
             </div>
 
@@ -150,18 +157,18 @@
 
                 <div class="wrapper">
                 <label for="homePhone">Home Phone</label>
-                <input name="homePhone" id="homePhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="111-111-1111" />
+                <input name="homePhone" id="homePhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" />
 
                 <label for="workPhone">Work Phone</label>
-                <input name="workPhone" id="workPhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="111-111-1111" />
+                <input name="workPhone" id="workPhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" />
                 </div>
 
                 <div class="wrapper">
                 <label for="cellPhone">Cell Phone</label>
-                <input name="cellPhone" id="cellPhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="111-111-1111" />
+                <input name="cellPhone" id="cellPhoneForm" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" />
 
                 <label for="email">E-mail</label>
-                <input name="email" id="emailForm" required type="email" value="test@gmail.com" />
+                <input name="email" id="emailForm" required type="email" placeholder="email@email.com" />
                 </div>
 
                 <div class="wrapper">
@@ -177,7 +184,7 @@
     <!-- Employee Details -->
     <div id="employeeDetails">
         <h1>Employee Details</h1>
-
+        
         <ul>
         <div class="container">
             <div class="wrapper">
@@ -226,8 +233,14 @@
             <li>Email Address: <span id="emailName"></span></li>
             </div>
         </div>
-            
         </ul>
+
+        <div class="container">
+            <div class="wrapper">
+                <button id="delete">Click here to delete Employee</button>
+            </div>
+        </div>
+
     </div>
     <!-- End Employee Details-->
 
@@ -244,7 +257,7 @@
 
     <!-- Footer Links -->
     <div class="container">
-        <div class="wrapper">
+        <div class="footWrapper">
         <button id="footHome">Home</button>
         <button id="footList">Employee List</button>
         <button id="footForm">Register New Employee</button>

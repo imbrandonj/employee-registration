@@ -16,19 +16,19 @@
 */
 
 // Main content display elements
-let indexContent = document.getElementById("index");
-let formContent = document.getElementById("form");
-let employeeContent = document.getElementById("employeeDetails");
-let listContent = document.getElementById("employeeList");
+const indexContent = document.getElementById("index");
+const formContent = document.getElementById("form");
+const employeeContent = document.getElementById("employeeDetails");
+const listContent = document.getElementById("employeeList");
 
 // Footer display elements
-let footHome = document.getElementById("footHome");
-let footList = document.getElementById("footList");
-let footForm = document.getElementById("footForm");
+const footHome = document.getElementById("footHome");
+const footList = document.getElementById("footList");
+const footForm = document.getElementById("footForm");
 
 // Index redirect buttons
-let indexListButton = document.getElementById("indexListButton");
-let indexRegisterButton = document.getElementById("indexRegisterButton");
+const indexListButton = document.getElementById("indexListButton");
+const indexRegisterButton = document.getElementById("indexRegisterButton");
 
 // Click events for content to be displayed
 indexListButton.addEventListener("click", () => {
@@ -135,10 +135,10 @@ function displayList(employeeObjArray) {
     else {
 
         // Sort employeeArray alphabetically by last name
-        employeeArray.sort( (a, b) => a.lastName.localeCompare(b.lastName) );
+        employeeObjArray.sort( (a, b) => a.lastName.localeCompare(b.lastName) );
 
         // List creation of Employee objects
-        for ( let employee of employeeArray ) {
+        for ( let employee of employeeObjArray ) {
             let listItem = document.createElement("li");
             let anchor = document.createElement("a");
             anchor.textContent = employee.lastName + ", " + employee.firstName;
@@ -147,7 +147,7 @@ function displayList(employeeObjArray) {
             anchor.addEventListener("click", () => {
 
                 // Search through array to find the clicked Employee object
-                for ( let employee of employeeArray ) {
+                for ( let employee of employeeObjArray ) {
 
                     if ( employee.lastName + ", " + employee.firstName === anchor.textContent ) {
                         // Push Employee clicked to localStorage

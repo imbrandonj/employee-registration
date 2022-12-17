@@ -35,8 +35,15 @@ body {
 
 .wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 1em 1em 0;
+}
+
+.footWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 /*
@@ -47,7 +54,7 @@ h1 {
     margin: 4rem 8rem;
     font-family: "Arial Narrow";
     font-variant: all-petite-caps;
-    font-size: 3em;
+    font-size: 3.2rem;
     font-weight: 400;
 }
 
@@ -60,6 +67,10 @@ h2 {
 li {
     padding: 0 2em;
     font-size: 1.5em;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 /* The two links in "index" div */
@@ -89,15 +100,11 @@ li {
 }
 
 #indexListButton:hover {
-    background-color:rgba(71, 154, 255, 0.246);
+    background-color:rgba(90, 255, 200, 0.246);
 }
 
 #indexRegisterButton:hover {
     background-color: rgb(255, 242, 254);
-}
-
-button:hover {
-    cursor: pointer;
 }
 
 #emoji {
@@ -116,8 +123,9 @@ button:hover {
 #employeeList a {
     text-decoration: none;
     background-color: white;
-    padding: 0.25em 0.5em;
-    border-radius: 0.5em;
+    padding: 0.25em 0.75em;
+    border-radius: 0.25em;
+    border: 0.1rem solid gray;
 }
 
 #employeeList a:hover {
@@ -196,11 +204,26 @@ input:invalid {
 #employeeDetails span {
     background: white;
     border: 0.05em solid gray;
-    padding: 0.25em 0.5em;
+    padding: 0.25em 0.75em;
     border-radius: 0.5em;
     font-family:"Arial";
     font-variant: none;
     font-size: 0.85em;
+}
+
+#delete {
+    font-family: "Arial Narrow";
+    font-variant: all-petite-caps;
+    font-size: 1.5em;
+    padding: 0.25em 0.5em;
+    border: 0.1rem solid black;
+    border-radius: .5em;
+    background-color: white;
+}
+
+#delete:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgba(221,147,148,0.2);
 }
 
 
@@ -216,8 +239,8 @@ input:invalid {
     border-radius: .5em;
     background-color: white;
     font-size: 1.5em;
-    margin: 0 4em;
-    padding: 0.25em 0.5em;
+    padding: 0.25em;
+    width: 15rem;
 }
 
 #footHome:hover, #footForm:hover, #footList:hover {

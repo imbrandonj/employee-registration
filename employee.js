@@ -1,14 +1,14 @@
 "use strict";
 /*
 *   Employee Registration App
-*   main.js
+*   employee.js
 *   author: Brandon Jenkins
 *   date: 11/25/2022
 *
 *   This file handles the Employee class,
 *   Employee object array,
 *   LocalStorage,
-*   and filling out the employee detail document
+*   and filling out the Employee detail document
 */
 
 // Employee Class
@@ -37,66 +37,77 @@ class Employee {
 // Array of Employee objects
 let employeeArray = [];
 
-
-// This function stores an employee to local storage
-function pushToLocal(employeeObj) {
-
-    localStorage.setItem("firstName", employeeObj.firstName);
-    localStorage.setItem("lastName", employeeObj.lastName);
-    localStorage.setItem("middleName", employeeObj.middleName);
-    localStorage.setItem("dob", employeeObj.dob);
-    localStorage.setItem("social", employeeObj.social);
-    localStorage.setItem("street", employeeObj.street);
-    localStorage.setItem("city", employeeObj.city);
-    localStorage.setItem("state", employeeObj.state);
-    localStorage.setItem("zipcode", employeeObj.zipcode);
-    localStorage.setItem("hireDate", employeeObj.hireDate);
-    localStorage.setItem("jobPosition", employeeObj.jobPosition);
-    localStorage.setItem("department", employeeObj.department);
-    localStorage.setItem("homePhone", employeeObj.homePhone);
-    localStorage.setItem("workPhone", employeeObj.workPhone);
-    localStorage.setItem("cellPhone", employeeObj.cellPhone);
-    localStorage.setItem("email", employeeObj.email);
-};
+// This function stores an Employee object to localStorage
+const pushToLocal = (employeeObj) => localStorage.setItem("employeeObj", JSON.stringify(employeeObj));
 
 
-// Fill the employee detail card with the properties from the given employee object stored in local storage
+// Fill the employee detail card with the properties from the given Employee object stored in localStorage
 function fillEmployeeCard() {
 
     // Obtain document nodes to be filled with employee text content
     // These nodes are located in employee.html
-    let firstNameDetail = document.getElementById("firstName");
-    let lastNameDetail = document.getElementById("lastName");
-    let middleNameDetail = document.getElementById("middleName");
-    let dobDetail = document.getElementById("dob");
-    let socialDetail = document.getElementById("social");
-    let streetDetail = document.getElementById("streetName");
-    let cityDetail = document.getElementById("city");
-    let stateDetail = document.getElementById("state");
-    let zipcodeDetail = document.getElementById("zipcode");
-    let hireDateDetail = document.getElementById("hireDate");
-    let jobPositionDetail = document.getElementById("jobPosition");
-    let departmentDetail = document.getElementById("department");
-    let homePhoneDetail = document.getElementById("homePhone");
-    let workPhoneDetail = document.getElementById("workPhone");
-    let cellPhoneDetail = document.getElementById("cellPhone");
-    let emailDetail = document.getElementById("emailName");
+    const firstNameDetail = document.getElementById("firstName");
+    const lastNameDetail = document.getElementById("lastName");
+    const middleNameDetail = document.getElementById("middleName");
+    const dobDetail = document.getElementById("dob");
+    const socialDetail = document.getElementById("social");
+    const streetDetail = document.getElementById("streetName");
+    const cityDetail = document.getElementById("city");
+    const stateDetail = document.getElementById("state");
+    const zipcodeDetail = document.getElementById("zipcode");
+    const hireDateDetail = document.getElementById("hireDate");
+    const jobPositionDetail = document.getElementById("jobPosition");
+    const departmentDetail = document.getElementById("department");
+    const homePhoneDetail = document.getElementById("homePhone");
+    const workPhoneDetail = document.getElementById("workPhone");
+    const cellPhoneDetail = document.getElementById("cellPhone");
+    const emailDetail = document.getElementById("emailName");
 
-    // Display employee detail provided by local storage
-    firstNameDetail.textContent = localStorage.getItem("firstName");
-    lastNameDetail.textContent = localStorage.getItem("lastName");
-    middleNameDetail.textContent = localStorage.getItem("middleName");
-    dobDetail.textContent = localStorage.getItem("dob");
-    socialDetail.textContent = localStorage.getItem("social");
-    streetDetail.textContent = localStorage.getItem("street");
-    cityDetail.textContent = localStorage.getItem("city");
-    stateDetail.textContent = localStorage.getItem("state");
-    zipcodeDetail.textContent = localStorage.getItem("zipcode");
-    hireDateDetail.textContent = localStorage.getItem("hireDate");
-    jobPositionDetail.textContent = localStorage.getItem("jobPosition");
-    departmentDetail.textContent = localStorage.getItem("department");
-    homePhoneDetail.textContent = localStorage.getItem("homePhone");
-    workPhoneDetail.textContent = localStorage.getItem("workPhone");
-    cellPhoneDetail.textContent = localStorage.getItem("cellPhone");
-    emailDetail.textContent = localStorage.getItem("email");
+    // Retrieve Employee from localStorage
+    let employeeObj = localStorage.getItem("employeeObj");
+    employeeObj = JSON.parse(employeeObj);
+
+    // Display Employee detail provided by employeeObj stored in localStorage
+    firstNameDetail.textContent = employeeObj["firstName"];
+    lastNameDetail.textContent = employeeObj["lastName"];
+    middleNameDetail.textContent = employeeObj["middleName"];
+    dobDetail.textContent = employeeObj["dob"];
+    socialDetail.textContent = employeeObj["social"];
+    streetDetail.textContent = employeeObj["street"];
+    cityDetail.textContent = employeeObj["city"];
+    stateDetail.textContent = employeeObj["state"];
+    zipcodeDetail.textContent = employeeObj["zipcode"];
+    hireDateDetail.textContent = employeeObj["hireDate"];
+    jobPositionDetail.textContent = employeeObj["jobPosition"];
+    departmentDetail.textContent = employeeObj["department"];
+    homePhoneDetail.textContent = employeeObj["homePhone"];
+    workPhoneDetail.textContent = employeeObj["workPhone"];
+    cellPhoneDetail.textContent = employeeObj["cellPhone"];
+    emailDetail.textContent = employeeObj["email"];
 };
+
+
+// Delete Employee button event
+const deleteBtn = document.getElementById("delete");
+deleteBtn.addEventListener("click", () => {
+
+    if ( confirm("Are you sure you wish to delete this employee?") ) {
+        
+        // Retrieve Employee from localStorage
+        let employeeObj = localStorage.getItem("employeeObj");
+
+        // Search through employeeArray[] for employeeObj match
+        let indexOf = -1;
+        for ( let employee of employeeArray ) {
+            if ( employeeObj == JSON.stringify(employee) ) {
+                indexOf = employeeArray.indexOf(employee);
+            }
+        }
+
+        // Delete Employee from the employeeArray[]
+        employeeArray.splice(indexOf, 1);
+
+        // Redirect user to Employee list display
+        display(listContent);
+    }
+});

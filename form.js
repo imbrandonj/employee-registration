@@ -12,24 +12,24 @@
 */
 
 // Form ID
-let form = document.getElementById("register");
+const form = document.getElementById("register");
 
 // Form input fields that are validated via js
 // Remainder input fields are validated within html
-let firstNameField = document.getElementById("firstNameForm");
-let lastNameField = document.getElementById("lastNameForm");
-let middleNameField = document.getElementById("middleNameForm");
-let socialField = document.getElementById("socialForm");
-let streetField = document.getElementById("streetForm");
-let cityField = document.getElementById("cityForm");
-let zipcodeField = document.getElementById("zipcodeForm");
-let homePhoneField = document.getElementById("homePhoneForm");
-let workPhoneField = document.getElementById("workPhoneForm");
-let cellPhoneField = document.getElementById("cellPhoneForm");
+const firstNameField = document.getElementById("firstNameForm");
+const lastNameField = document.getElementById("lastNameForm");
+const middleNameField = document.getElementById("middleNameForm");
+const socialField = document.getElementById("socialForm");
+const streetField = document.getElementById("streetForm");
+const cityField = document.getElementById("cityForm");
+const zipcodeField = document.getElementById("zipcodeForm");
+const homePhoneField = document.getElementById("homePhoneForm");
+const workPhoneField = document.getElementById("workPhoneForm");
+const cellPhoneField = document.getElementById("cellPhoneForm");
 
 
 // Submit button events
-let subButton = document.getElementById("submit");
+const subButton = document.getElementById("submit");
 subButton.addEventListener("click", validateNames);  // test correct name character input
 subButton.addEventListener("click", validateStreet);  // test correct street character input
 subButton.addEventListener("click", validateTele);  // custom phone validity message
@@ -42,7 +42,7 @@ subButton.addEventListener("click", validateSocial);  // custom social security 
 function validateNames() {
     
     // Regex - only letters, & 1 instance of each: apostrophes, hyphens, white space
-    let nameRegx = /[^a-zA-Z\s'-]|[\s'-]{2}/g;
+    const nameRegx = /[^a-zA-Z\s'-]|[\s'-]{2}/g;
 
     // Tested field values:
     let firstName = firstNameField.value;
@@ -52,35 +52,35 @@ function validateNames() {
 
     // First name test
     if ( nameRegx.test(firstName) )
-        firstNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+        firstNameField.setCustomValidity("Enter letters and only one instance of a hyphen or apostrophe");
     else 
         firstNameField.setCustomValidity("");
 
     // Middle name test
     if ( nameRegx.test(middleName) )
-        middleNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+        middleNameField.setCustomValidity("Enter letters and only one instance of a hyphen or apostrophe");
     else 
         middleNameField.setCustomValidity("");
 
     // Last name test
     if ( nameRegx.test(lastName) )
-        lastNameField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+        lastNameField.setCustomValidity("Enter letters and only one instance of a hyphen or apostrophe");
     else 
         lastNameField.setCustomValidity("");
 
     // City name test
     if ( nameRegx.test(cityName) )
-        cityField.setCustomValidity("Enter letters and only one instance of a hypen or apostrophe");
+        cityField.setCustomValidity("Enter letters and only one instance of a hyphen or apostrophe");
     else 
         cityField.setCustomValidity("");
 }
 
 
-// Validate street - only digits, letters, hypens, or apostrophes
+// Validate street - only digits, letters, hyphens, or apostrophes
 function validateStreet() {
 
     // Regex - only digits and letters, & 1 instance of each: apostrophes, hyphens, white space
-    let streetRegx = /[^\da-zA-Z\s'-]|[\s'-]{2}/g;
+    const streetRegx = /[^\da-zA-Z\s'-]|[\s'-]{2}/g;
 
     // Street value
     let street = streetField.value;
